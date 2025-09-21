@@ -1,0 +1,29 @@
+{
+	"name": "Dioxus chunked-read-write example",
+	"image": "mcr.microsoft.com/devcontainers/rust:2-1-trixie",
+	
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"upgradePackages": true
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"rust-analyzer.checkOnSave.command": "clippy",
+				"rust-analyzer.cargo.allFeatures": true,
+				"rust-analyzer.procMacro.enable": true
+			}
+		}
+	},
+
+	"forwardPorts": [3000, 8080],
+	
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached,relabel=private",
+	"workspaceFolder": "/workspace",
+	
+	"postCreateCommand": ".devcontainer/install-deps.sh",
+	
+	"remoteUser": "vscode"
+}
