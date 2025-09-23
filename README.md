@@ -1,10 +1,14 @@
 # Development
 
 1. In VSCode, Reopen in Container
-2. 
-```sh
-dx serve
-```
+2. Run integration tests
+    ```sh
+    wasm-pack test --headless --firefox
+    ```
+3. Run web app
+    ```sh
+    dx serve
+    ```
 
 # Chunked Read from CDN
 

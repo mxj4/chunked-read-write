@@ -3,7 +3,7 @@ set -euo pipefail
 
 # You need to install Clang and possibly other build tools for cross-compiling C/C++ code to WebAssembly.
 sudo apt update
-sudo apt install -y clang chromium chromium-driver
+sudo apt install -y clang
 
 # Install Dioxus CLI and add wasm target. Assumes rustup and cargo are already present
 # in the base devcontainer image (official Rust devcontainer includes rustup).
@@ -20,7 +20,9 @@ if ! cargo install --list | grep -q "dioxus-cli"; then
     # If already present, reinstall to ensure latest. --force is used to update.
     cargo binstall dioxus-cli@0.7.0-rc.0 --no-confirm --locked --force || true
 fi
+
 echo "Installing or updating integration test tools..."
+sudo apt install -y firefox-esr
 if ! cargo install --list | grep -q "wasm-pack"; then
     cargo binstall wasm-pack --no-confirm || true
 fi
